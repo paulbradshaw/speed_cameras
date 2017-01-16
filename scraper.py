@@ -14,8 +14,9 @@ print "After converting to xml it has %d bytes" % len(xmldata)
 root = lxml.etree.fromstring(xmldata)
 
 # this line uses xpath to find <text tags
-# fails with Last run failed 2 minutes ago with status code 128. But works when run from Terminal. May have to delete.
-lines = root.findall('.//text')
+# once this failed with 'Last run failed 2 minutes ago with status code 128'. 
+#Editing the code and re-running solved it, as suggested at https://stackoverflow.com/questions/16721629/jenkins-returned-status-code-128-with-github
+lines = root.findall('.//text[@font="3"]//b')
 print lines
 for line in lines:
     print line.text
