@@ -16,9 +16,9 @@ root = lxml.etree.fromstring(xmldata)
 # this line uses xpath to find <text tags
 # once this failed with 'Last run failed 2 minutes ago with status code 128'. 
 #Editing the code and re-running solved it, as suggested at https://stackoverflow.com/questions/16721629/jenkins-returned-status-code-128-with-github
-lines = root.findall('.//text[@font="3"]//b')
-print lines
+lines = root.findall('.//text[@font="5"]')
 record = {}
 for line in lines:
-    record["date"] = line.text
-    scraperwiki.sqlite.save(['date'], record)
+    if len(line.text)4:
+        record["date"] = line.text
+        scraperwiki.sqlite.save(['date'], record)
