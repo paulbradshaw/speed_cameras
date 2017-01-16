@@ -19,6 +19,6 @@ root = lxml.etree.fromstring(xmldata)
 lines = root.findall('.//text[@font="5"]')
 record = {}
 for line in lines:
-    if len(line.text)4:
+    if len(line.text):
         record["date"] = line.text
         scraperwiki.sqlite.save(['date'], record)
