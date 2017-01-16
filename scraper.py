@@ -19,7 +19,7 @@ root = lxml.etree.fromstring(xmldata)
 # this line uses xpath, which is supported by lxml.etree (which has created root) to grab the contents of any <text tags and put them all in a list variable called 'lines'
 lines = root.findall('.//text')
     #create an empty dictionary variable called 'record'
-    record = {}
+record = {}
 # loop through each item in the list, and assign it to a variable called 'line'
 for line in lines:
     #create a variable called 'fontvalue', and use the get method to give it the value of the <font attribute of 'line'
