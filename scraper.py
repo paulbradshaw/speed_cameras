@@ -18,5 +18,7 @@ root = lxml.etree.fromstring(xmldata)
 #Editing the code and re-running solved it, as suggested at https://stackoverflow.com/questions/16721629/jenkins-returned-status-code-128-with-github
 lines = root.findall('.//text[@font="3"]//b')
 print lines
+record = {}
 for line in lines:
-    print line.text
+    record["date"] = line.text
+    scraperwiki.sqlite.save(['date'], record)
