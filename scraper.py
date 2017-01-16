@@ -38,7 +38,7 @@ for line in lines:
         code = line.text
         continue
     #if 'fontvalue' is 5 AND the length of the text in 'line' is more than 4 characters
-    if fontvalue == "5" and len(line.text)4:
+    if fontvalue == "5" and len(line.text)>4:
         #grab the text in 'line' and store it in a field called 'location' in the dictionary variable 'record'
         record["location"] = line.text
         #store the value of the 'date' variable in a field called 'date' in the dictionary variable 'record'
