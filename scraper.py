@@ -23,7 +23,7 @@ for line in lines:
     if len(line.text)<5:
         code = line.text
         print record
-    if len(line.text)4:
+    if len(line.text)>4:
         record["location"] = line.text
         record["code"] = code
         print record
