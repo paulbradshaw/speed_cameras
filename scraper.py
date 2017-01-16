@@ -18,8 +18,10 @@ root = lxml.etree.fromstring(xmldata)
 #Editing the code and re-running solved it, as suggested at https://stackoverflow.com/questions/16721629/jenkins-returned-status-code-128-with-github
 # this line uses xpath, which is supported by lxml.etree (which has created root) to grab the contents of any <text tags and put them all in a list variable called 'lines'
 lines = root.findall('.//text')
-    #create an empty dictionary variable called 'record'
+#create an empty dictionary variable called 'record'
 record = {}
+#Create a variable to store an index that we can use as a unique key
+uniquekey = 0
 # loop through each item in the list, and assign it to a variable called 'line'
 for line in lines:
     #create a variable called 'fontvalue', and use the get method to give it the value of the <font attribute of 'line'
@@ -47,5 +49,9 @@ for line in lines:
         record["code"] = code
         #print the value of 'record'
         print record
+        #increment our uniquekey variable by 1
+        uniquekey += 1
+        #store it in 'record' with the same label
+        record["uniquekey"] = uniquekey
         #save those values in scraperwiki's sqlite database, with 'code' as the unique key
-        scraperwiki.sqlite.save(['code'], record)
+        scraperwiki.sqlite.save(['uniquekey'], record)
